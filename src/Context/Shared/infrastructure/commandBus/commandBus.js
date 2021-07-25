@@ -28,10 +28,8 @@ module.exports = () => {
     if (!handler) throw new Error('handler not registered')
 
     try {
-      console.log('HANDLER1', handler)
-      console.log('HANDLER2', await handler()())
       // return await handler.handle(command)
-      await handler()(command)
+      await handler.handle(command)
 
     } catch(err){
       console.log(err)

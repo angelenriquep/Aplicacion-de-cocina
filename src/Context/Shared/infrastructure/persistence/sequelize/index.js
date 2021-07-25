@@ -34,5 +34,13 @@ module.exports = ({ config, basePath }) => {
     }
   });
 
+  // sequelize.sync({force: process.env.NODE_ENV != 'production' && process.env.BUILD_DB == true})
+  //   .then(function() {
+  //     console.log('Database synchronization done!');
+  //   })
+  //   .catch(function(error) {
+  //     console.log('Database synchronization Fail: ' + error);
+  //   });
+
   return db
 }

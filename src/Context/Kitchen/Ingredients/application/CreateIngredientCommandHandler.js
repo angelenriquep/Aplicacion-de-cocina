@@ -7,4 +7,8 @@ module.exports = ({ ingredientCreator }) => {
     var { id, name } = command;
     await ingredientCreator.run({ id, name });
   }
+
+  return {
+    handle,
+  }
 }

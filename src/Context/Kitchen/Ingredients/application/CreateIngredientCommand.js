@@ -1,3 +1,5 @@
+'use strict';
+
 
 function CreateIngredientCommand (id, name) {
   if (!id) {

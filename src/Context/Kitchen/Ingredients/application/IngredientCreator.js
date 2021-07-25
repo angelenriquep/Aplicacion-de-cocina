@@ -1,18 +1,23 @@
 'use strict';
 
 // use case
-const { Ingredient } = require('../domain/Ingredient')
+const Ingredient = require('../domain/Ingredient')
 
+
+// Ingredient Repository deberia tener un metodo persist y un buscar.
+// ingredientRepository
 module.exports = ({ ingredientRepository, eventBus }) => {
-  const create = ({ body }) => {
+  const run = ({ id, name }) => {
     return Promise
       .resolve()
       .then(async () => {
-        const ingredient = Ingredient(body)
-        await ingredientRepository.create(ingredient)
+        const ingredient = Ingredient({ id, name })
 
+        await ingredientRepository.persit(ingredient)
+        
         // dto?
-        eventBus.emit('ingrdient created', {} )
+        eventBus.emit('event', { id, name, __name: 'INGREDIENT_CREATED' } )
+
       })
       .catch((error) => {
         throw new Error(error)
@@ -20,7 +25,7 @@ module.exports = ({ ingredientRepository, eventBus }) => {
   }
 
   return {
-    create
+    run
   }
 }
  
